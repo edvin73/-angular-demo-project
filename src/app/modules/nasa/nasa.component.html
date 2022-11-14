@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="container row w-75 mt-2">
+      <div class="col-sm-6">
+        <a role="button"
+           (click)="getPicOfDay()">
+          <i style="font-size: 18px;" class="fa fa-magnifying-glass"></i>
+          <span style="font-size: 18px;">Today's picture</span>
+        </a>
+
+      </div>
+
+    <div class="col-sm-6">
+      <span style="font-size: 16px;">Another Day</span>
+      <input style="width: 150px; "  type="date" id="picDate" name="picDate" [(ngModel)]="this.picDate"/>
+
+       <a role="button"
+         (click)="getPicOfOtherDay()">
+        <i class="fa fa-magnifying-glass"></i>
+      </a>
+
+    </div>
+  </div>
+
+
+  <div *ngIf="nasaResponse && this.picURL" class="container w-75 mx-auto border-top mt-3 text-center" style="height: 400px;">
+    <div class="container-fluid mt-2">
+      <h1>{{nasaResponse.date | date: 'dd/MM/yyyy'}}</h1>
+      <h1>Astronomy Picture of the Day </h1>
+      <h2>{{nasaResponse.title}} </h2>
+        <p class="text-lg-start" style="font-size: 18px;">
+          {{nasaResponse.explanation}}
+        </p>
+
+      <div class="container mx-auto w-auto" style="height: 550px; overflow: auto">
+         <img class="image-holder mx-auto" style="width: 100%;" [src]="getSafeUrl()" />
+      </div>
+
+    </div>
+  </div>
+</div>

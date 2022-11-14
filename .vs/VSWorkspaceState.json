@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\model",
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\nasa",
+    "\\src\\app\\modules\\task"
+  ],
+  "SelectedNode": "\\src\\app\\model\\TaskPriority.ts",
+  "PreviewInSolutionExplorer": true
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div id="site" class="row">
+ 
+                <div id="content" class="col-md-8">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>Titre 1</h1>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                Assumenda sit quia, omnis et nesciunt aliquid molestiae, 
+                                dolorem sapiente voluptatum quis ullam, non hic asperiores 
+                                laudantium accusantium accusamus beatae dignissimos nulla.
+                            </p>
+                        </div>
+                        <div id="tableau" class="col-xs-12">
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Adresse Email</th>
+                                            <th>Code Postal</th>
+                                        </tr>
+                                    </thead>
+    
+                                    <tbody>
+                                        <tr>
+                                            <td>Blanc 
+                                            <span class="input-group-text fa-pull-right">New</span>
+                                         </td>
+                                            <td>Micher</td>
+                                            <td>mb@aol.com</td>
+                                            <td>78000</td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td>Blanc</td>
+                                            <td>Micher</td>
+                                            <td>mb@aol.com</td>
+                                            <td >78000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-arrow-counterclockwise"></i>Blanc</td>
+                                            <td>Micher</td>
+                                            <td>mb@aol.com</td>
+                                            <td class="table-info">78000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Blanc</td>
+                                            <td>Micher</td>
+                                            <td>mb@aol.com</td>
+                                            <td>78000</td>
+                                        </tr>
+                                    </tbody>
+    
+                                </table>
+                            </div> 
+                            
+                        </div> <!-- #tableau -->
+
+                        <div id="boutons" class="col-xs-12">
+                            <a href="#" class="btn btn-sm btn-info">
+                                Ajouter un membre
+                            </a>
+                            <button class="btn btn-sm btn-warning">
+                                Modifier un membre
+                            </button>
+
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown">
+                                    Supprimer un membre<span class="navbar-toggler-icon"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ><a class="btn btn-info" href="#">Valider</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li ><a class="btn btn-danger" href="#"> <i class="bi bi-arrow-counterclockwise"></i>Annuler</a></li>
+                                </ul>
+                            </div>
+                           
+
+
+                            <button type="button" class="btn btn-sm btn-light float-end">Exporter</button>
+                        </div> <!-- #boutons -->
+                    </div>
+
+                </div> <!-- #content-->
+ 
+                <div id="sidebar" class="col-md-4">
+
+                </div>  <!-- #sidebar-->
+              
+            </div> <!-- #site -->
+
+            <div id="pagination" class="mt-5">
+               <nav>
+                <ul class="pagination pagination-sm justify-content-center">
+                    <li class="page-item"> <a class="page-link" href="#">Précédent</a> </li>
+                    <li class="page-item"> <a class="page-link"href="#">1</a> </li>
+                    <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                    <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                    <li class="page-item"> <a class="page-link" href="#">4</a> </li>
+                    <li class="page-item"> <a class="page-link" href="#">5</a> </li>
+                    <li class="page-item"> <a class="page-link" href="#">Suivant</a> </li>
+                </ul>
+             </nav>
+            </div> <!-- #pagination -->
+
+            <div id="modal" class="mt-3">
+
+                <div class="row">
+                <!-- Button trigger modal -->
+                    <div class="col-sm-12 col-md-4">
+                        <a role="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Launch static backdrop modal
+                        </a>
+                    </div>  
+
+                    <div class="col-sm-12 col-md-3">
+                        <a role="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                            Launch second static modal
+                        </a>
+                    </div>
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" 
+                                tabindex="-1" 
+                                aria-labelledby="staticBackdropLabel" 
+                                aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            ...
+                            </div>
+                            <div class="modal-footer">
+                            <a type="button" class="btn btn-secondary" 
+                             (click)="closeEvent('Close Btn clicked')"
+                                data-bs-dismiss="modal">Close</a>
+                            <a type="button" 
+                                class="btn btn-primary" 
+                                (click)="clickBtnEvent('Btn OK clicked')"
+                                data-bs-dismiss="modal">Ok</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal 2 -->
+                    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" 
+                                tabindex="-1" 
+                                aria-labelledby="staticBackdropLabel" 
+                                aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            
+                            <a role="button" class="btn-close"  
+                                 data-bs-dismiss="modal" aria-label="Close"></a>
+                            </div>
+                            <div class="modal-body">
+                                <span> {{msgSaveOkFr}}</span>
+                            </div>
+                            <div class="modal-footer">
+                            <a  role="button" 
+                                    class="btn btn-outline-success" 
+                                    (click)="closeEvent('Close event clicked')"
+                                    data-bs-dismiss="modal">Close</a> 
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Vertically centered modal -->
+                    <div class="modal-dialog modal-dialog-centered">
+                        ...
+                    </div>
+                    
+                    <!-- Vertically centered scrollable modal -->
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                       ..
+                    </div>
+
+            </div> <!-- modal -->
+
+        </div>
+
+    </body>
+</html>

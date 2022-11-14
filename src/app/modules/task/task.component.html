@@ -1,0 +1,187 @@
+
+<div class="container mx-auto ">
+    <div id="taskHead" class="container mt-4 col-md-11 border-bottom  mx-auto w-75" style="height: 120px;">
+            <div class="row mx-auto mt-2 ">
+                <div class="col-auto  text-end form-text">
+                    <span class="form-label">Task Id </span>
+                </div>
+                <div class="col-auto text-right">
+                    <input type="text" style="text-align: right; width: 100px;" class="form-control" />
+                </div>
+                <div class="col-auto  text-right form-text">
+                    <span class="form-label">Task Title</span>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="col-auto  text-right form-label form-text">
+                    <span class="form-label">Priority</span>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select-sm" name="prioId" id="prioId" style="width: 100px;">
+                        <option id="0" value="0"></option>
+                        <option *ngFor="let prio of prios"
+                            value="{{prio.priorityId}}">{{prio.priorityName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-auto text-right form-text">
+                    <span class="form-label">Assigned To</span>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select-sm" name="userId" id="userId" style="width: 120px;">
+                        <option id="0" value="0"></option>
+                        <option *ngFor="let u of users"
+                            value="{{u.userId}}">{{u.lastName}} {{u.firstName}}
+                        </option>
+                    </select>
+                </div>
+ 
+               
+                
+            </div>
+
+            <div class="col-auto float-end  ">
+                <a role="button"
+                (click)="getAllTasks()"
+                title="Search"
+                >
+                    <i class="fa-solid fa-magnifying-glass" style="color: blue; font-size: 20px;"></i>
+                </a>
+                </div>
+            
+
+            <div class="row mx-auto mt-2  ">
+                <div class="col-auto text-end  form-text">
+                    <span class="form-label">Start Date</span>
+                </div>
+                <div class="col-auto">
+                    <input type="date" style="width: 100px;" class="form-control name" name="startDate" id="startDate"/>
+                </div>
+
+                <div class="col-md-1 text-end form-text">
+                    <span class="form-label">End Date</span>
+                </div>
+                <div class="col-auto">
+                    <input type="date" style="width: 100px;" class="form-control name" name="endDate" id="endDate"/>
+                </div>
+
+                <div class="col-auto text-end form-text">
+                    <span class="form-label">Created On</span>
+                </div>
+                <div class="col-auto">
+                    <input type="date" style="width: 100px;" class="form-control name" name="createdOn" id="createdOn"/>
+                </div>
+            </div>
+                
+            <div class="col-auto float-end ">
+                <a role="button"
+                    (click)="resetForm()"
+                    title="Cancel"
+                    >
+                        <i class="fa-solid fa-xmark" style="color: blue; font-size: 20px;"></i>
+                    </a>
+            </div>
+           
+            
+    </div>
+ 
+
+    <div id="taskMenu" class="container col-sm-12 mt-2 w-75" style="height: 50px;">
+        <div class="float-end">
+            <a role="button"
+                (click)="createNewTask()"
+                title="Create new task"
+                >
+                    <i class="fa fa-plus-circle"></i>
+                    Create new Task</a>
+        </div>
+    </div>
+
+    <div id="taskBody" class="container mx-auto col-sm-12" >
+
+         <table id="tabTask" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Task Title</th>
+                    <th>Task Description</th>
+                    <th>Prority</th>
+                    <th>Assigned To</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Created On</th>
+                    <th>Accomplished</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tasks">
+                    <td>
+                        {{ t.taskId }}
+                    </td>
+                    <td>
+                        {{ t.taskTitle }}
+                    </td>
+                    <td>
+                        {{ t.taskDescription }}
+                    </td>
+                    <td>
+                        {{ t.taskPriority?.priorityName }}
+                    </td>
+                    <td>
+                        {{ t.assignedTo?.lastName }} {{ t.assignedTo?.firstName }}
+                    </td>
+                    <td>
+                        {{ t.startDate | date: "dd/MM/yyyy"}}
+                    </td>
+                    <td>
+                        {{ t.endDate | date: "dd/MM/yyyy"}}
+                    </td>
+                    <td>
+                        {{ t.createdOn | date: "dd/MM/yyyy"}}
+                    </td>
+                    <td>
+                        {{ t.accomplished }}
+                    </td>
+
+                    <td>
+                        <a (click)="editTask(t)" role="button"><i class="fa fa-edit" ></i></a>
+                        
+                        <a class="m-lg-2" 
+                            (click)="selectTaskToDelete(t)" 
+                            role="button" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#staticBackdrop">
+                                <i class="fa fa-trash" ></i> 
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" 
+                tabindex="-1" 
+                aria-labelledby="staticBackdropLabel" 
+                aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-lg-center">
+                <span>Do you want to delete the Task [{{this.taskService.taskToDelete?.taskTitle}}] ?</span>
+                <br>
+                <span>Description : <span style="font-style: italic;">{{this.taskService.taskToDelete?.taskDescription}}</span></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="deleteTask()" data-bs-dismiss="modal">Yes</button> 
+                <button type="button" class="btn btn-danger" (click)="releaseTask()" data-bs-dismiss="modal">Non</button> 
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>

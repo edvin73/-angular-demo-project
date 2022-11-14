@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("/assets/fonts/ProximaNova-RegWeb.woff") format("woff")
+}
+@font-face {
+    font-family: "Proxima Nova Bold";
+    src: url("/assets/fonts/ProximaNova-BoldWeb.woff") format("woff")
+}
+@font-face {
+    font-family: "Proxima Nova Light";
+    src: url("/assets/fonts/ProximaNova-LightWeb.woff") format("woff")
+}
+
+
+* {
+   font-family: Proxima Nova;
+}
+
+
+#taskHead input  {
+    height: 25px;
+}
+
+#taskHead select  {
+    height: 25px;
+}
+
+#taskHead span  {
+    height: 25px;
+}

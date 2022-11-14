@@ -1,0 +1,170 @@
+<form >
+
+    <div *ngIf="this.errorMessage " class="mx-auto w-75">
+        <span class="text-danger ">{{this.errorMessage }}</span>
+    </div>
+
+    <div *ngIf="this.infoMessage "  class="mx-auto w-75">
+        <span class="text-bg-info">{{this.infoMessage }}</span>
+    </div>
+
+    <div class="container w-75 mt-2 " style="height: 25px;">
+        <a type="button" id="back"
+            (click)="goBack()" >
+            <i class="fa-solid fa-arrow-left"></i>&nbsp;Back
+        </a>
+    </div>
+
+    <div class="container w-75 mt-2 " style="height: 25px;">
+        <a type="button" id="back"
+            (click)="saveTask()" >
+            <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save
+        </a>
+
+    </div>
+
+    <div class="container w-75 mx-auto border mt-5">
+        <div class="row   align-items-center mt-2 mb-2">
+            <div class="col-auto">
+            <label for="taskId" class="col-form-label">Task Id</label>
+            </div>
+            <div *ngIf="pageLoaded && task"  class="col-auto">
+            <input [(ngModel)]="task.taskId" type="text"
+                        id="taskId"
+                        name="taskId"
+                        class="form-control" disabled
+                        style="width: 50px;">
+            </div>
+
+            <div class="col-auto">
+                <label for="taskId" class="col-form-label">Created On</label>
+                </div>
+                <div *ngIf="pageLoaded && task"  class="col-auto">
+                <input [(ngModel)]="task.createdOn " type="text"
+                            id="createdOn"
+                            name="createdOn"
+                            class="form-control" disabled
+                            style="width: 150px;">
+                </div>
+
+            <div class="col-auto">
+                <label for="taskId" class="col-form-label">Modified On</label>
+                </div>
+                <div *ngIf="pageLoaded && task"  class="col-auto">
+                <input [(ngModel)]="task.modifiedOn " type="text"
+                            id="modifiedOn"
+                            name="modifiedOn"
+                            class="form-control" disabled
+                            style="width: 150px;">
+                </div>
+        </div>
+        <div class="row mt-5  align-items-center">
+
+
+            <div class="col-auto mt-2">
+                <label for="taskId" class="col-form-label">Title</label>
+            </div>
+            <div *ngIf="pageLoaded && task" class="col-auto">
+                <input [(ngModel)]="task!.taskTitle"
+                            placeholder="Task Title"
+                            type="text"
+                            id="taskTitle"
+                            name="taskTitle"
+                            class="form-control"
+                            style="width: 300px;">
+            </div>
+
+            <div class="col-auto">
+                <label for="taskId" class="col-form-label">Description</label>
+            </div>
+            <div *ngIf="pageLoaded && task"  class="col-auto">
+                <input [(ngModel)]="task!.taskDescription" type="text"
+                            id="taskDescription"
+                            name="taskDescription"
+                            class="form-control"
+                            style="width: 350px;">
+            </div>
+
+            <div class="col-auto">
+                <label for="taskId" class="col-form-label">Priority</label>
+            </div>
+            <div *ngIf="pageLoaded"  class="col-auto">
+                <select   class="form-select "
+                            name="prioId"
+                            id="prioId"
+                            style="width: 100px;"
+                             (change)="onChangePrio($any($event.target).value)" >
+                    <option > --- SELECT ---</option>
+                    <option *ngFor="let prio of prios"
+                        [value]="prio.priorityId"
+                        [selected]="prio.priorityId == this.task?.taskPriority?.priorityId">
+                           {{prio.priorityName}}
+                    </option>
+                </select>
+            </div>
+
+
+        </div>
+
+        <div class="row mt-5  align-items-center">
+
+            <div class="col-auto">
+                <label for="taskId" class="col-form-label">Assigned To</label>
+            </div>
+            <div  class="col-auto">
+
+                <select *ngIf="this.task "
+                        class="form-select "
+                        name="assignedTo"
+                        id="assignedTo"
+                        style="width: 180px;"
+                        (ngModelChange)="changeUser($event)"
+                        [(ngModel)]="selectedUserObj">
+                    <option> --- SELECT ---</option>
+                    <option *ngFor="let u of users"
+                        [ngValue]="u"
+                        [selected]="u.userId == selectedUserObj?.userId">
+                        {{u.lastName}} {{u.firstName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-auto mt-2">
+                <label for="startDate" class="col-form-label">Start</label>
+            </div>
+            <div *ngIf="pageLoaded && task" class="col-auto">
+                <input [(ngModel)]="task!.startDate"
+                            placeholder="Task Title"
+                            type="datetime-local"
+                            id="startDate"
+                            name="startDate"
+                            class="form-control"
+                            style="width: 170px;">
+            </div>
+
+            <div class="col-auto mt-2">
+                <label for="endDate" class="col-form-label">End</label>
+            </div>
+            <div *ngIf="pageLoaded && task" class="col-auto">
+                <input [(ngModel)]="task!.endDate"
+                            placeholder="Task Title"
+                            type="datetime-local"
+                            id="endDate"
+                            name="endDate"
+                            class="form-control"
+                            style="width: 170px;">
+            </div>
+
+            <div class="col-auto mt-2">
+                <label for="startDate" class="col-form-label">Accomplished</label>
+            </div>
+            <div *ngIf="pageLoaded && task" class="col-auto">
+                <input   (click)="setAcommplished($any($event.target).checked)"
+                            type="checkbox"
+                            id="accomplished"
+                            name="accomplished"
+                            class="form-check"  >
+            </div>
+        </div>
+    </div>
+</form>

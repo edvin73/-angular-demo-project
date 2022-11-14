@@ -1,0 +1,11 @@
+<div class="container mx-0">
+    File Service
+</div>
+<div class="list-group">
+    <a *ngFor="let fileData of fileList" 
+            class="list-group-item list-group-item-action" 
+            role="button"
+            (click)="downloadFile(fileData)">{{fileData.filename}}
+        
+        </a>
+</div>
