@@ -14,8 +14,10 @@ import { TabHomeComponent } from './modules/tab-home/tab-home.component';
 import { TabContactComponent } from './modules/tab-contact/tab-contact.component';
 import { TaskComponent } from './modules/task/task.component';
 import { TaskDetailComponent } from './modules/task-detail/task-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NasaComponent } from './modules/nasa/nasa.component';
+import { UserComponent } from './modules/user/user.component';
+import { UserDetailComponent } from './modules/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [		
@@ -29,14 +31,17 @@ import { NasaComponent } from './modules/nasa/nasa.component';
       TabContactComponent,
       TaskComponent,
       TaskDetailComponent,
-      NasaComponent 
+      NasaComponent,
+      UserComponent,
+      UserDetailComponent 
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,    
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
