@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Task } from '../model/task';
 import { TaskPriority } from '../model/TaskPriority';
 import { User } from '../model/User';
+import { TaskFile } from '../model/TaskFile';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,16 @@ export class TaskService {
   getTaskById(id: number): Observable<Task> {
       
     return this.httpClient.get<Task>(environment.serverSpringURL + '/tasks/'+id);
+  }
+  
+  getAllTaskFiles(id: number): Observable<TaskFile[]> {
+      
+    return this.httpClient.get<TaskFile[]>(environment.serverSpringURL + '/tasks/'+id+'/files');
+  }
+
+  getTaskFileById(taskIid: number, fileId: number): Observable<TaskFile[]> {
+      
+    return this.httpClient.get<TaskFile[]>(environment.serverSpringURL + '/tasks/'+taskIid+'/files/'+fileId);
   }
 
   createTask(task: Task): Observable<Task> {
